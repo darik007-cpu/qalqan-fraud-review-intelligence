@@ -1,0 +1,63 @@
+# QALQAN — Fraud Review Intelligence
+
+Research checked **23 October 2026**. Proposed independent English-language workspace for a bank fraud analyst in Kazakhstan. This document defines a product hypothesis; it does not establish that existing bank systems lack the proposed functions.
+
+## The problem to test
+
+**Can an analyst reconstruct a suspicious payment's evidence, understand related activity, and record a defensible next step with less effort and fewer missed facts?**
+
+The observable industry problem is payment fraud involving several kinds of signals and participants. The specific claim that analysts lose time switching tools or struggle with their current interfaces remains an interview and pilot hypothesis. Public incident totals do not measure analyst workload, false positives, or interface quality.
+
+## Official evidence and existing capability
+
+| Primary source                                                                                                             | Date and scope                                                                          | What it establishes                                                                                                                                                                                                                                                                                                                                                                                   |
+| -------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [National Bank: Anti-Fraud Center results](https://nationalbank.kz/ru/news/informacionnye-soobshcheniya/18571)             | Published **4 February 2026**; incident count as of **1 January 2026**.                 | 80,871 incidents involving transactions with signs of fraud were registered; KZT 2.8 billion was blocked and more than KZT 0.5 billion returned. These are distinct measures; registered incidents are not a count of convicted offenders, customers, or proven losses. The release also describes existing integration with the pre-trial investigation register and planned analytical development. |
+| [National Bank: Anti-Fraud Center launch](https://nationalbank.kz/ru/news/informacionnye-soobshcheniya/16901)              | Announcement published **5 August 2024**.                                               | Production operation, a shared fraud database, and real-time participant information exchange already existed. Do not present a shared national fraud platform as a new invention.                                                                                                                                                                                                                    |
+| [National Payment Corporation: Anti-Fraud Center](https://npck.kz/antifrod-tsentr/)                                        | Live operator description; publication date not displayed; checked **23 October 2026**. | Existing capabilities include a unified participant interface, continuous data exchange, incident consolidation, and analytical/statistical reporting. This is the system operator, not an independent assessment of usability.                                                                                                                                                                       |
+| [National Payment Corporation: Anti-Fraud Center service catalogue](https://npck.kz/tarify-antifrod-tsentr/)               | Page identifies a board approval dated **6 August 2026**; checked **23 October 2026**.  | The official service list explicitly includes analytical dashboards and fraud typologies. An attractive dashboard by itself is not substantiated differentiation. No pricing recommendation is made here.                                                                                                                                                                                             |
+| [Financial Market Regulation Agency: anti-fraud measures](https://www.gov.kz/org/ardfm/press/news/details/1264496?lang=ru) | Publication date was not exposed by the retrieved page; checked **23 October 2026**.    | The regulator describes multi-institution payment chains, session anti-fraud, P2P risk exchange, and linked-operation analysis. These capabilities must not be described as absent. This brief uses the page qualitatively; its differently scoped cumulative totals are not combined with the February NBK statistics.                                                                               |
+
+The evidence supports a relevant operating domain. It does **not** prove that QALQAN will outperform a bank's current software, reduce fraud losses, or gain access to national infrastructure.
+
+## Product hypothesis
+
+**QALQAN helps an analyst move from a review signal to an explicit, evidence-linked case conclusion.** Candidate first user: an analyst reviewing suspicious retail transfers with a supervisor checking case quality.
+
+| Workspace             | Concrete analyst task                              | Proposed demonstration behavior                                                                                                                                                                                                           |
+| --------------------- | -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Review queue          | Decide what needs attention next.                  | Rank synthetic cases by transparent review rules; show amount, age, missing evidence, and reason for priority. A review score is not a fraud probability.                                                                                 |
+| Evidence desk         | Establish what is known and what is uncertain.     | Display transaction chronology, related accounts, device/session observations, source timestamps, contradictions, and missing information. Every signal links to supporting records.                                                      |
+| Relationship explorer | Understand a chain without losing context.         | Interactive 3D accounts/devices/merchant network plus an equivalent table and timeline. Sliders control playback time, visible relationship depth, and layer spacing. Layout distance does not imply guilt or a real geographic distance. |
+| Policy lab            | Understand the workload tradeoff of a rule change. | Replay explicit thresholds over the same labelled synthetic dataset. Show confusion-matrix counts, review volume, precision, and recall when labels exist. Unlabelled imports cannot produce accuracy claims.                             |
+| Case workspace        | Record investigation progress and rationale.       | New → Investigating → Reviewed states, evidence references, reviewer notes, an outcome with rationale, and a local case history. No payment blocking, account restrictions, official reports, or customer contact occurs.                 |
+
+Potential differentiation is a **testable combination of workflow clarity, evidence provenance, reproducible threshold comparison, and accessible visual exploration**. Interview users of existing systems before claiming missing features. A 3D view must earn its place by improving a timed task; it is optional if a table performs better.
+
+## Pilot measures and decision rules
+
+Use matched cases, counterbalance tool order, and have a supervisor establish the reference outcome independently. Separate clearly synthetic demonstrations from any later authorized historical-data pilot. Record task difficulty, analyst experience, and unresolved outcomes.
+
+| Measure                          | Definition                                                                                                                      | Decision it informs                                                     |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| Time to evidence-complete review | Median and 90th-percentile time from opening a case to a review containing the agreed required evidence.                        | Does the workspace reduce effort while preserving completeness?         |
+| Evidence omission rate           | Required facts omitted or incorrectly interpreted / required facts assessed.                                                    | Is a faster review still reliable?                                      |
+| Case decision agreement          | Agreement with independently adjudicated outcomes; report unresolved cases separately.                                          | Does the UI support consistent conclusions?                             |
+| Review burden                    | Cases flagged per 1,000 transactions and median handling time per flagged case.                                                 | What staffing burden does a threshold create?                           |
+| Rule precision and recall        | Precision = TP/(TP+FP); recall = TP/(TP+FN), only on a labelled evaluation set. Undefined denominators display “not available.” | Does a rule change trade unnecessary reviews for missed labelled fraud? |
+| Rework rate                      | Reviewed cases returned for missing evidence or unclear rationale / reviewed cases.                                             | Does the case record help supervisors?                                  |
+
+Agree acceptance thresholds with the pilot bank **before** evaluation. A candidate target could be a 20% reduction in median review time with no increase in evidence omissions; this is a proposed success criterion, not an observed result. Keep a time-separated holdout and entity separation when evaluating detection rules to limit leakage. Do not convert flagged transfer totals into “money saved” without verified outcomes and a defensible attribution method.
+
+## Demonstration boundaries
+
+- Use fictional institutions, opaque synthetic account/device identifiers, fictional transactions, and KZT amounts. Show a persistent simulation label. No real names, account numbers, credentials, or personal records are required.
+- Display event time and a stated timezone. Preserve incoming UTC instants and distinguish event time from case creation time. Define the exact inclusive/exclusive boundaries of every replay window.
+- Keep payments, device links, and analyst assertions as separate record types. Deduplicate transaction IDs, validate currencies and amounts, and reject incomplete datasets rather than silently guessing relationships.
+- A shared device or a rapid transfer is a review signal, not proof of criminal activity. Nationality, ethnicity, age, or other protected traits must not be used as demo risk features.
+- Clearly label thresholds as demonstration rules. No trained model, calibrated probability, validated detection performance, or regulatory compliance is implied.
+- Any locally saved case is a prototype record. Real deployment requires authorized data access, approved integration contracts, secure identity, access controls, retention rules, immutable audit history, and bank validation. The prototype has no connection to the National Bank, National Payment Corporation, credit bureaus, law enforcement, or payment rails.
+
+## Discovery required before product claims
+
+Observe analysts reconstructing a small set of representative cases in their current tools. Identify the exact evidence they consult, handoffs that create rework, and information they cannot currently access. Confirm whether an authorized historical export and adjudicated labels exist. Test the same tasks in a simple table, a 2D graph, and the proposed 3D view. Continue only if the measured workflow benefit justifies the added complexity.
