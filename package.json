@@ -1,0 +1,25 @@
+{
+  "name": "qalqan-fraud-review-intelligence",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 4174",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4174",
+    "test": "node --test *.test.js",
+    "format": "prettier --write *.js *.jsx *.css *.html *.json docs README.md"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "leaflet": "^1.9.4",
+    "lucide-react": "^1.61.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.10",
+    "vite": "^7.3.7"
+  }
+}

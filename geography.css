@@ -1,0 +1,502 @@
+/* QALQAN: a city directory beside the financial workspace. */
+.geo-banking {
+  color: #183d31;
+  min-width: 0;
+  --geo-green: #215f49;
+  --geo-muted: #6b7c72;
+  --geo-line: #dce6df;
+}
+.geo-banking .geo-heading {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 32px;
+}
+.geo-bank-emblem {
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  flex-shrink: 0;
+  border: 1px solid #cee0d3;
+  border-radius: 50%;
+  background: #edf5ee;
+  color: var(--geo-green);
+}
+.geo-banking .geo-eyebrow {
+  display: block;
+  font:
+    600 9px/1.6 Inter,
+    sans-serif;
+  letter-spacing: 0.14em;
+  color: var(--geo-muted);
+}
+.geo-banking h1 {
+  margin: 5px 0 8px;
+  font:
+    400 clamp(34px, 4vw, 51px)/1.1 Georgia,
+    serif;
+  letter-spacing: -0.04em;
+}
+.geo-banking .geo-heading p {
+  margin: 0;
+  font:
+    13px/1.7 Inter,
+    sans-serif;
+  color: var(--geo-muted);
+}
+.geo-bank-layout {
+  display: grid;
+  grid-template-columns: 270px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.geo-city-directory {
+  padding: 23px 20px;
+  background: #fff;
+  border: 1px solid var(--geo-line);
+  border-radius: 18px;
+}
+.geo-directory-heading h2 {
+  margin: 7px 0;
+  font:
+    400 27px/1.2 Georgia,
+    serif;
+  letter-spacing: -0.025em;
+}
+.geo-directory-heading p {
+  margin: 0;
+  font:
+    11px/1.6 Inter,
+    sans-serif;
+  color: var(--geo-muted);
+}
+.geo-city-list {
+  margin: 22px -9px 15px;
+  display: grid;
+  gap: 7px;
+}
+.geo-city-list button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: transparent;
+  color: #345b48;
+  padding: 14px 10px;
+  cursor: pointer;
+}
+.geo-city-list button.active {
+  border-color: #bfd7c7;
+  background: #edf5ef;
+}
+.geo-city-list button:hover {
+  background: #f1f6f1;
+}
+.geo-city-list button > span:nth-child(2) {
+  flex: 1;
+}
+.geo-city-number {
+  color: #829587;
+  font:
+    10px Inter,
+    sans-serif;
+}
+.geo-city-list strong {
+  font:
+    500 14px/1.3 Inter,
+    sans-serif;
+  display: block;
+}
+.geo-city-list small {
+  display: block;
+  margin-top: 5px;
+  font:
+    9px/1.4 Inter,
+    sans-serif;
+  color: var(--geo-muted);
+}
+.geo-country-button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 39px;
+  border: 1px solid #c9dace;
+  border-radius: 99px;
+  background: white;
+  color: #215f49;
+  font:
+    11px Inter,
+    sans-serif;
+  cursor: pointer;
+}
+.geo-country-button:hover {
+  background: #edf5ef;
+}
+.geo-privacy-note {
+  display: flex;
+  gap: 10px;
+  border-top: 1px solid var(--geo-line);
+  padding-top: 20px;
+  margin-top: 25px;
+  color: #698676;
+}
+.geo-privacy-note svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.geo-privacy-note p {
+  margin: 0;
+  font:
+    11px/1.8 Inter,
+    sans-serif;
+  color: var(--geo-muted);
+}
+.geo-bank-map-card {
+  min-width: 0;
+  border: 1px solid var(--geo-line);
+  border-radius: 18px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 6px 20px #183d3105;
+}
+.geo-map-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 17px 20px;
+}
+.geo-map-caption > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font:
+    10px Inter,
+    sans-serif;
+  color: var(--geo-muted);
+}
+.geo-map-caption > strong {
+  font:
+    400 18px Georgia,
+    serif;
+}
+.geo-status-dot {
+  width: 6px;
+  height: 6px;
+  background: #488c66;
+  border-radius: 50%;
+}
+.geo-banking .geo-map-shell {
+  position: relative;
+  isolation: isolate;
+}
+.geo-banking .geo-map {
+  width: 100%;
+  height: 456px;
+  z-index: 0;
+  background: #edf0e7;
+  font-family: Inter, sans-serif;
+}
+.geo-banking .leaflet-tile {
+  max-width: none !important;
+  max-height: none !important;
+}
+.geo-banking .leaflet-control-attribution {
+  color: #2a493a;
+  background: #fffffff2;
+  font:
+    10px/1.6 Inter,
+    sans-serif;
+  padding: 2px 6px;
+}
+.geo-banking .leaflet-control-attribution a {
+  color: #215f49;
+  text-decoration: underline;
+}
+.geo-banking .leaflet-control-zoom {
+  border: 1px solid #b9cbbb;
+  border-radius: 9px;
+  overflow: hidden;
+  margin: 14px;
+  box-shadow: 0 2px 7px #12401c12;
+}
+.geo-banking .leaflet-control-zoom a {
+  background: #fff;
+  color: #215f49;
+  border-color: #d6e3d8;
+  width: 34px;
+  height: 34px;
+  line-height: 34px;
+}
+.geo-banking .leaflet-control-zoom a:hover {
+  background: #e9f2ea;
+}
+.geo-banking .leaflet-control-scale {
+  margin: 0 0 16px 14px;
+}
+.geo-banking .leaflet-control-scale-line {
+  background: #fffef2ee;
+  color: #294236;
+  border-color: #294236;
+  font-size: 10px;
+}
+.geo-banking .geo-map-stamp {
+  position: absolute;
+  z-index: 1;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 99px;
+  padding: 9px 12px;
+  background: #fffffff2;
+  color: #35694d;
+  pointer-events: none;
+  font:
+    9px Inter,
+    sans-serif;
+  box-shadow: 0 2px 8px #123a1610;
+}
+.geo-banking .geo-map-stamp svg {
+  transform: rotate(-45deg);
+}
+.geo-bank-map-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 15px 18px;
+}
+.geo-bank-map-footer > span {
+  font:
+    10px/1.7 Inter,
+    sans-serif;
+  color: #4f715d;
+  font-variant-numeric: tabular-nums;
+}
+.geo-bank-map-footer small {
+  color: var(--geo-muted);
+}
+.geo-bank-map-footer > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+.geo-banking .geo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--geo-green);
+  font:
+    500 11px/1.6 Inter,
+    sans-serif;
+  text-decoration: none;
+}
+.geo-banking .geo-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.geo-bank-map-footer .geo-link {
+  border: 1px solid #d1dfd4;
+  border-radius: 99px;
+  padding: 7px 10px;
+}
+.geo-bank-map-footer .geo-link:first-child {
+  background: #215f49;
+  color: white;
+  border-color: #215f49;
+}
+.geo-bank-footnotes {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin: 22px 0;
+}
+.geo-bank-footnotes > p {
+  margin: 0;
+  max-width: 510px;
+  font:
+    11px/1.8 Inter,
+    sans-serif;
+  color: var(--geo-muted);
+}
+.geo-bank-footnotes > div {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+.geo-banking .geo-source {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-top: 1px solid var(--geo-line);
+  padding: 15px 0 0;
+  font:
+    10px/1.6 Inter,
+    sans-serif;
+  color: var(--geo-muted);
+}
+.geo-banking .geo-source a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.geo-banking .geo-source .geo-link {
+  font-size: 10px;
+}
+.geo-banking .geo-notice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  margin-top: 15px;
+  color: #73592b;
+  background: #faf3df;
+  border-radius: 12px;
+}
+.geo-banking .geo-notice p {
+  margin: 0;
+  font-size: 12px;
+  flex: 1;
+}
+.geo-banking .geo-notice button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid #d7c498;
+  border-radius: 99px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.geo-banking button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+.geo-banking :is(button, a):focus-visible {
+  outline: 2px solid #215f49;
+  outline-offset: 3px;
+}
+.geo-banking .geo-map:focus-visible {
+  outline: 3px solid #215f49;
+  outline-offset: -3px;
+}
+.geo-banking .geo-map-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 25px;
+  background: #edf5ee;
+}
+.geo-banking .geo-map-fallback h2 {
+  margin: 15px 0 8px;
+  font:
+    28px Georgia,
+    serif;
+}
+.geo-banking .geo-map-fallback p {
+  font-size: 13px;
+  max-width: 320px;
+  color: var(--geo-muted);
+}
+.geo-banking .geo-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+@media (max-width: 1000px) {
+  .geo-bank-layout {
+    grid-template-columns: 225px minmax(0, 1fr);
+    gap: 16px;
+  }
+  .geo-city-directory {
+    padding: 20px 15px;
+  }
+  .geo-bank-map-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+@media (max-width: 700px) {
+  .geo-bank-layout {
+    grid-template-columns: 1fr;
+  }
+  .geo-city-directory {
+    padding: 20px;
+  }
+  .geo-city-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+    margin: 15px 0;
+  }
+  .geo-city-list button {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 9px;
+    gap: 5px;
+  }
+  .geo-city-list button > svg,
+  .geo-city-number {
+    display: none;
+  }
+  .geo-city-list small {
+    font-size: 8px;
+  }
+  .geo-privacy-note {
+    padding-top: 14px;
+    margin-top: 16px;
+  }
+  .geo-bank-footnotes {
+    flex-direction: column;
+    gap: 13px;
+  }
+  .geo-banking .geo-map {
+    height: 390px;
+  }
+}
+@media (max-width: 480px) {
+  .geo-bank-emblem {
+    width: 46px;
+    height: 46px;
+  }
+  .geo-banking .geo-heading {
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .geo-banking h1 {
+    font-size: 34px;
+  }
+  .geo-map-caption {
+    padding: 14px;
+  }
+  .geo-map-caption > strong {
+    font-size: 16px;
+  }
+  .geo-banking .geo-map-stamp {
+    font-size: 8px;
+  }
+}
